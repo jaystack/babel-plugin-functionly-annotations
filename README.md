@@ -11,7 +11,7 @@ npm install --save-dev babel-plugin-functionly-annotations
 ```
 
 ```sh
-npm install --save-dev babel-plugin-transform-decorators-legacy babel-preset-es2015
+npm install --save-dev babel-plugin-transform-decorators-legacy babel-preset-es2015-node5
 ```
 
 .babelrc
@@ -23,7 +23,7 @@ npm install --save-dev babel-plugin-transform-decorators-legacy babel-preset-es2
     "transform-decorators-legacy"
   ],
   "presets": [
-    "es2015"
+    "es2015-node5"
   ]
 }
 ```
