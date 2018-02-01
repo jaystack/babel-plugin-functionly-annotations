@@ -46,6 +46,7 @@ export default function ({ types: t }) {
   function parameterDecorators(bodyNode, classRef, decorators) {
     const params = bodyNode.params;
     const isCtor = bodyNode.kind === 'constructor';
+    const isStatic = bodyNode.static;
 
     const decoratorLists = params.map((param, i) => {
       const decorators = param.decorators;
@@ -57,7 +58,7 @@ export default function ({ types: t }) {
       return decorators.map((decorator) => {
         const call = decorator.expression;
         const args = [
-          isCtor ? classRef : t.memberExpression(classRef, t.identifier('prototype')),
+          isCtor || isStatic ? classRef : t.memberExpression(classRef, t.identifier('prototype')),
           isCtor ? t.identifier('undefined') : t.stringLiteral(bodyNode.key.loc.identifierName),
           t.identifier(i.toString())
         ];
